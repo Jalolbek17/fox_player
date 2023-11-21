@@ -1,0 +1,455 @@
+/* MOBILE */
+
+@mixin mobile {
+    @media screen and (max-width: 815px) {
+        @content;
+    }
+}
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+.icon {
+    font-family: "Material Icons" !important;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    font-size: 16px;
+
+    @include mobile {
+        font-size: 14px;           
+    }
+}
+
+/* FLEX */
+
+body, .tv-schedule, .music-box, .header, .channels, .programs, .programs .program, .music-box .content, .music-box .content .song, .playlist, .playlist .song {
+    display: flex;
+    align-items: center;
+}
+
+/* MAIN */
+
+body {
+    min-height: 100vh;
+    justify-content: center;
+    background-color: #A3C5F3;
+}
+
+.container {
+    background-color: #fff;
+    box-shadow: 0 5px 8px rgba(0,0,0,.2);
+    max-width: 815px;
+    width: 100%;
+    height: fit-content;
+
+    @include mobile {
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    .content {
+        overflow: hidden;
+
+        @include mobile {
+            overflow: unset;
+        }
+    }
+
+    .tv-schedule, .music-box {
+        padding: 1.9rem 0;
+
+        @include mobile {
+            padding: 0 1.4rem;
+            flex-direction: column;
+                
+            .content {
+                align-self: flex-start;
+            }
+        }
+
+        .left-icon {
+            color: #A3C5F3;
+            font-size: 1.95rem;
+            margin: 2.6rem;
+
+            @include mobile {
+                margin: 1.6rem;   
+            }
+        }
+
+        .thumbnail {
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 15px 10px -10px rgba(0,0,0,.45);
+
+            &.active {
+                transform: scale(1.22);
+                z-index: 10;
+            }
+
+            &:hover .icon {
+                opacity: 1;
+            }
+
+            .icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                user-select: none;
+                color: #fff;
+                font-size: 1.25rem;
+                background-color: rgba(0, 0, 0, 0.7);
+                width: 38px;
+                height: 38px;
+                text-align: center;
+                line-height: 38px;
+                border-radius: 50%;
+                opacity: 0;
+                transition: opacity .14s;
+            }
+        }
+    }
+}
+
+.header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/background.jpg") no-repeat center center;
+    background-size: cover;
+    justify-content: space-between;
+    padding: 2.6rem;
+    color: #fff;
+
+    @include mobile {
+        flex-direction: column;
+        padding: 2.1rem;
+    }
+
+    .weather-box {
+        @include mobile {
+            margin-bottom: .4rem;
+        }
+
+        .forecast {
+            display: inline-block;
+            margin-right: 1.9rem;
+            font-size: .95rem;
+            text-align: center;
+
+            @include mobile {
+                margin-right: 1.2rem;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            .day {
+                text-transform: uppercase;
+                font-weight: 700;
+                margin: .37rem 0 .19rem 0;
+            }
+
+            .temp {
+                margin-top: .1rem;
+                opacity: .95;
+            }
+
+            &.current {
+                .temp, .icon {
+                    font-size: 2.6rem;
+                    opacity: 1;
+                }
+            }
+        }
+
+    }
+
+    .date-box {
+        .date {
+            display: inline-block;
+            font-size: 1.05rem;
+            text-align: right;
+            margin-right: 1.05rem;
+            color: #bfbfbf;
+            font-weight: 500;
+
+            @include mobile {
+                font-size: .95rem;
+                margin-right: .95rem;   
+            }
+        }
+
+        .time {
+            font-size: 3.9rem;
+            font-weight: 100;
+
+            .meridiem {
+                font-size: 1rem;
+                text-transform: uppercase;
+                font-weight: 500;
+                margin-left: .3rem;
+
+                @include mobile {
+                    font-size: .85rem;
+                    margin-left: .2rem;
+                }
+            }
+        }
+    }
+}
+
+.tv-schedule {
+    border-bottom: 1px solid #bfbfbf;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -4px;
+        transform: translateX(-50%);
+        width: 115px;
+        height: 8px;
+        background-color: #A3C5F3;
+        border-radius: 115px;
+    }
+
+    .channels {
+        align-items: flex-end;
+
+        .channel {
+            color: #999;
+            padding: 0 .8rem;
+            cursor: pointer;
+            transition: color .1s;
+            
+            @include mobile {
+                padding: 0 .5rem;
+                font-size: .9rem;
+            }
+
+            &:first-child {
+                padding-left: 0;
+            }
+    
+            &:last-child {
+                padding-right: 0;
+            }
+
+            &:hover {
+                color: #292929;
+            }
+
+            &.active {
+                margin-bottom: -1px;
+                color: #292929;
+                font-size: 1.34em;
+                font-weight: 900;
+
+                @include mobile {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+
+    .programs {
+        margin-bottom: .4rem;
+
+        @include mobile {
+            margin-bottom: 2.2rem;   
+            margin-left: 1.4rem;    
+        }
+        
+        .program {
+            flex: 0 0;
+            flex-direction: column;
+    
+            
+            .thumbnail {
+                margin: 1.75rem 0 1.2rem 0;
+                width: 163px;
+                height: 92px;
+                
+                &.local-programming {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-local-programming.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+                &.family-guy {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-family-guy.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+                &.the-simpsons {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-simpsons.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+                &.futurama {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-futurama.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+                &.american-dad {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-american-dad.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+
+                @include mobile {
+                    margin-top: 1.85rem;
+
+                    &.local-programming {
+                        transform: scale(1.22);
+                        z-index: 10;
+                    }
+
+                    &.active {
+                        transform: unset;
+                        z-index: unset;
+                    }
+                }
+            }
+
+            .hours {
+                font-size: .87rem;
+                text-transform: uppercase;
+                color: #999;
+            }
+        }
+    }
+}
+
+.music-box .content {
+    @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .player {
+        flex-shrink: 0;
+        margin-right: 2.5rem;
+        
+        @include mobile {
+            margin-right: 0;
+            width: 90vw;
+        }
+
+        .song {
+            .artwork {
+                width: 58px;
+                height: 58px;
+                background: url("../img/music-with-you.jpg") no-repeat center center;
+                background-size: cover;
+                box-shadow: 0 11px 11px -8px rgba(0,0,0,.22);
+            }
+
+            .song-infos {
+                margin-left: .95rem;
+
+                .artist {
+                    color: #999;
+                    margin-top: .1rem;
+                    font-size: .88rem;
+                }
+            }
+        }
+
+        .progress {
+            margin-top: .8rem;
+
+            @include mobile {
+                display: flex;
+                align-items: center;
+            }
+
+            .duration {
+                color: #999;
+                font-size: .82rem;
+            }
+            
+            .progress-bar {
+                display: inline-block;
+                vertical-align: middle;
+                width: 248px;
+                height: 2px;
+                position: relative;
+                background: linear-gradient(90deg, #222 30%, #cecece 30%);
+                margin: 0 .8rem;
+
+                @include mobile {
+                    width: 100%;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 30%;
+                    width: 9px;
+                    height: 9px;
+                    border-radius: 50%;
+                    background-color: #222;
+                }
+            }
+        }
+    }
+
+    .playlist {
+        @include mobile {
+            margin-left: 1.4rem;
+        }
+        .song {
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            height: 155px;
+
+            @include mobile {
+                margin: 1.5rem 0;
+            }
+
+            .thumbnail {
+                margin-bottom: 1.2rem;
+                width: 92px;
+                height: 92px;
+
+                &.with-you {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/music-with-you.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+                &.butter {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/music-butter.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+                &.back-together {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/music-back-together.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+                &.futurama {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-futurama.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+                &.unwind {
+                    background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/music-unwind.jpg") no-repeat center center;
+                    background-size: cover;
+                }
+            }
+
+            .title {
+                overflow: hidden;
+                width: 70px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}

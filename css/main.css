@@ -1,0 +1,543 @@
+/* MOBILE */
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.icon {
+  font-family: "Material Icons" !important;
+}
+
+li {
+  list-style: none;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 815px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* FLEX */
+body, .tv-schedule, .music-box, .header, .channels, .programs, .programs .program, .music-box .content, .music-box .content .song, .playlist, .playlist .song {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* MAIN */
+body {
+  min-height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #A3C5F3;
+}
+
+.container {
+  background-color: #fff;
+  -webkit-box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  max-width: 815px;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+@media screen and (max-width: 815px) {
+  .container {
+    min-height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.container .content {
+  overflow: hidden;
+}
+
+@media screen and (max-width: 815px) {
+  .container .content {
+    overflow: unset;
+  }
+}
+
+.container .tv-schedule, .container .music-box {
+  padding: 1.9rem 0;
+}
+
+@media screen and (max-width: 815px) {
+  .container .tv-schedule, .container .music-box {
+    padding: 0 1.4rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .container .tv-schedule .content, .container .music-box .content {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+}
+
+.container .tv-schedule .left-icon, .container .music-box .left-icon {
+  color: #A3C5F3;
+  font-size: 1.95rem;
+  margin: 2.6rem;
+}
+
+@media screen and (max-width: 815px) {
+  .container .tv-schedule .left-icon, .container .music-box .left-icon {
+    margin: 1.6rem;
+  }
+}
+
+.container .tv-schedule .thumbnail, .container .music-box .thumbnail {
+  position: relative;
+  cursor: pointer;
+  -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.45);
+          box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.45);
+}
+
+.container .tv-schedule .thumbnail.active, .container .music-box .thumbnail.active {
+  -webkit-transform: scale(1.22);
+          transform: scale(1.22);
+  z-index: 10;
+}
+
+.container .tv-schedule .thumbnail:hover .icon, .container .music-box .thumbnail:hover .icon {
+  opacity: 1;
+}
+
+.container .tv-schedule .thumbnail .icon, .container .music-box .thumbnail .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #fff;
+  font-size: 1.25rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transition: opacity .14s;
+  transition: opacity .14s;
+}
+
+.header {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url("../img/background.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/background.jpg") no-repeat center center;
+  background-size: cover;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2.6rem;
+  color: #fff;
+}
+
+@media screen and (max-width: 815px) {
+  .header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 2.1rem;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .header .weather-box {
+    margin-bottom: .4rem;
+  }
+}
+
+.header .weather-box .forecast {
+  display: inline-block;
+  margin-right: 1.9rem;
+  font-size: .95rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 815px) {
+  .header .weather-box .forecast {
+    margin-right: 1.2rem;
+  }
+  .header .weather-box .forecast:last-child {
+    margin-right: 0;
+  }
+}
+
+.header .weather-box .forecast .day {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: .37rem 0 .19rem 0;
+}
+
+.header .weather-box .forecast .temp {
+  margin-top: .1rem;
+  opacity: .95;
+}
+
+.header .weather-box .forecast.current .temp, .header .weather-box .forecast.current .icon {
+  font-size: 2.6rem;
+  opacity: 1;
+}
+
+.header .date-box .date {
+  display: inline-block;
+  font-size: 1.05rem;
+  text-align: right;
+  margin-right: 1.05rem;
+  color: #bfbfbf;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 815px) {
+  .header .date-box .date {
+    font-size: .95rem;
+    margin-right: .95rem;
+  }
+}
+
+.header .date-box .time {
+  font-size: 3.9rem;
+  font-weight: 100;
+}
+
+.header .date-box .time .meridiem {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-left: .3rem;
+}
+
+@media screen and (max-width: 815px) {
+  .header .date-box .time .meridiem {
+    font-size: .85rem;
+    margin-left: .2rem;
+  }
+}
+
+.tv-schedule {
+  border-bottom: 1px solid #bfbfbf;
+  position: relative;
+}
+
+.tv-schedule::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 115px;
+  height: 8px;
+  background-color: #A3C5F3;
+  border-radius: 115px;
+}
+
+.tv-schedule .channels {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.tv-schedule .channels .channel {
+  color: #999;
+  padding: 0 .8rem;
+  cursor: pointer;
+  -webkit-transition: color .1s;
+  transition: color .1s;
+}
+
+@media screen and (max-width: 815px) {
+  .tv-schedule .channels .channel {
+    padding: 0 .5rem;
+    font-size: .9rem;
+  }
+}
+
+.tv-schedule .channels .channel:first-child {
+  padding-left: 0;
+}
+
+.tv-schedule .channels .channel:last-child {
+  padding-right: 0;
+}
+
+.tv-schedule .channels .channel:hover {
+  color: #292929;
+}
+
+.tv-schedule .channels .channel.active {
+  margin-bottom: -1px;
+  color: #292929;
+  font-size: 1.34em;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 815px) {
+  .tv-schedule .channels .channel.active {
+    font-size: 1.2rem;
+  }
+}
+
+.tv-schedule .programs {
+  margin-bottom: .4rem;
+}
+
+@media screen and (max-width: 815px) {
+  .tv-schedule .programs {
+    margin-bottom: 2.2rem;
+    margin-left: 1.4rem;
+  }
+}
+
+.tv-schedule .programs .program {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0;
+          flex: 0 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.tv-schedule .programs .program .thumbnail {
+  margin: 1.75rem 0 1.2rem 0;
+  width: 163px;
+  height: 92px;
+}
+
+.tv-schedule .programs .program .thumbnail.local-programming {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/video-local-programming.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-local-programming.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.tv-schedule .programs .program .thumbnail.family-guy {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/video-family-guy.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-family-guy.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.tv-schedule .programs .program .thumbnail.the-simpsons {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/video-simpsons.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-simpsons.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.tv-schedule .programs .program .thumbnail.futurama {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/video-futurama.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-futurama.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.tv-schedule .programs .program .thumbnail.american-dad {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/video-american-dad.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-american-dad.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+@media screen and (max-width: 815px) {
+  .tv-schedule .programs .program .thumbnail {
+    margin-top: 1.85rem;
+  }
+  .tv-schedule .programs .program .thumbnail.local-programming {
+    -webkit-transform: scale(1.22);
+            transform: scale(1.22);
+    z-index: 10;
+  }
+  .tv-schedule .programs .program .thumbnail.active {
+    -webkit-transform: unset;
+            transform: unset;
+    z-index: unset;
+  }
+}
+
+.tv-schedule .programs .program .hours {
+  font-size: .87rem;
+  text-transform: uppercase;
+  color: #999;
+}
+
+@media screen and (max-width: 815px) {
+  .music-box .content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+.music-box .content .player {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin-right: 2.5rem;
+}
+
+@media screen and (max-width: 815px) {
+  .music-box .content .player {
+    margin-right: 0;
+    width: 90vw;
+  }
+}
+
+.music-box .content .player .song .artwork {
+  width: 58px;
+  height: 58px;
+  background: url("../img/music-with-you.jpg") no-repeat center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 11px 11px -8px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 11px 11px -8px rgba(0, 0, 0, 0.22);
+}
+
+.music-box .content .player .song .song-infos {
+  margin-left: .95rem;
+}
+
+.music-box .content .player .song .song-infos .artist {
+  color: #999;
+  margin-top: .1rem;
+  font-size: .88rem;
+}
+
+.music-box .content .player .progress {
+  margin-top: .8rem;
+}
+
+@media screen and (max-width: 815px) {
+  .music-box .content .player .progress {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.music-box .content .player .progress .duration {
+  color: #999;
+  font-size: .82rem;
+}
+
+.music-box .content .player .progress .progress-bar {
+  display: inline-block;
+  vertical-align: middle;
+  width: 248px;
+  height: 2px;
+  position: relative;
+  background: -webkit-gradient(linear, left top, right top, color-stop(30%, #222), color-stop(30%, #cecece));
+  background: linear-gradient(90deg, #222 30%, #cecece 30%);
+  margin: 0 .8rem;
+}
+
+@media screen and (max-width: 815px) {
+  .music-box .content .player .progress .progress-bar {
+    width: 100%;
+  }
+}
+
+.music-box .content .player .progress .progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 30%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #222;
+}
+
+@media screen and (max-width: 815px) {
+  .music-box .content .playlist {
+    margin-left: 1.4rem;
+  }
+}
+
+.music-box .content .playlist .song {
+  text-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 155px;
+}
+
+@media screen and (max-width: 815px) {
+  .music-box .content .playlist .song {
+    margin: 1.5rem 0;
+  }
+}
+
+.music-box .content .playlist .song .thumbnail {
+  margin-bottom: 1.2rem;
+  width: 92px;
+  height: 92px;
+}
+
+.music-box .content .playlist .song .thumbnail.with-you {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/music-with-you.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/music-with-you.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.music-box .content .playlist .song .thumbnail.butter {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/music-butter.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/music-butter.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.music-box .content .playlist .song .thumbnail.back-together {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/music-back-together.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/music-back-together.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.music-box .content .playlist .song .thumbnail.futurama {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/video-futurama.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/video-futurama.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.music-box .content .playlist .song .thumbnail.unwind {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.39)), to(rgba(0, 0, 0, 0.39))), url("../img/music-unwind.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.39), rgba(0, 0, 0, 0.39)), url("../img/music-unwind.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.music-box .content .playlist .song .title {
+  overflow: hidden;
+  width: 70px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/*# sourceMappingURL=main.css.map */
